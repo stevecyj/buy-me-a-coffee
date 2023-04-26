@@ -13,9 +13,13 @@ import {
 import CoffeeLogo from './coffee.svg';
 import { ConnectWallet, useContract } from '@thirdweb-dev/react';
 import { BUYACOFFEE_ADDRESS } from './const/contractAddress';
+import { useEffect } from 'react';
 
 export default function Home() {
   const { contract } = useContract(BUYACOFFEE_ADDRESS);
+  useEffect(() => {
+    console.log('contract', contract);
+  }, [contract]);
 
   return (
     <Box bg='#fefefe' w={'100%'} h={'100%'}>
