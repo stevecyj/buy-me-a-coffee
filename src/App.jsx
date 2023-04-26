@@ -11,9 +11,12 @@ import {
   Heading,
 } from '@chakra-ui/react';
 import CoffeeLogo from './coffee.svg';
-import { ConnectWallet } from '@thirdweb-dev/react';
+import { ConnectWallet, useContract } from '@thirdweb-dev/react';
+import { BUYACOFFEE_ADDRESS } from './const/contractAddress';
 
 export default function Home() {
+  const { contract } = useContract(BUYACOFFEE_ADDRESS);
+
   return (
     <Box bg='#fefefe' w={'100%'} h={'100%'}>
       <Container maxW={'1200px'} w={'100%'}>
