@@ -49,6 +49,9 @@ export default function Home() {
                   <Heading size='md' md='20px'>
                     Buy Me a Coffee
                   </Heading>
+                  <Flex>
+                    <Text>Total Coffee：</Text>
+                  </Flex>
                 </CardBody>
               </Card>
             </Box>
