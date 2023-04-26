@@ -9,6 +9,7 @@ import {
   Card,
   CardBody,
   Heading,
+  Skeleton,
 } from '@chakra-ui/react';
 import CoffeeLogo from './coffee.svg';
 import {
@@ -68,6 +69,9 @@ export default function Home() {
                   </Heading>
                   <Flex>
                     <Text>Total Coffee：</Text>
+                    <Skeleton w={'20px'} isLoaded={!loadingTotalCoffee}>
+                      {totalCoffee?.toString()}
+                    </Skeleton>
                   </Flex>
                 </CardBody>
               </Card>
