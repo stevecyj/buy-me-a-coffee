@@ -18,9 +18,11 @@ import {
   ConnectWallet,
   useContract,
   useContractRead,
+  Web3Button,
 } from '@thirdweb-dev/react';
 import { BUYACOFFEE_ADDRESS } from './const/contractAddress';
 import { useEffect, useState } from 'react';
+import { ethers } from 'ethers';
 
 export default function Home() {
   const [name, setName] = useState('');
@@ -100,10 +102,26 @@ export default function Home() {
                     bg='gray.100'
                     onChange={(e) => setMessage(e.target.value)}
                   />
-                  <Box mt={'20px'}></Box>
+                  <Box mt={'20px'}>
+                    <Center>
+                      <Web3Button
+                        btnTitle='連接錢包'
+                        contractAddress={BUYACOFFEE_ADDRESS}
+                        action={async () => {
+                          await contract.call('buyCoffee', [message, name], {
+                            value: ethers.utils.parseEther('0.01'),
+                          });
+                        }}
+                      >
+                        買一杯咖啡
+                      </Web3Button>
+                    </Center>
+                  </Box>
                 </CardBody>
               </Card>
             </Box>
+            {/*右半邊卡片*/}
+            <Box>右半邊卡片</Box>
           </SimpleGrid>
         </Flex>
       </Container>
