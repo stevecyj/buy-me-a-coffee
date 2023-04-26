@@ -7,7 +7,13 @@ export default function Home() {
     <Box bg='#fefefe' w={'100%'} h={'100%'}>
       <Container maxW={'1200px'} w={'100%'}>
         {/*Navbar*/}
-        <Flex px='10px' bg={{ base: '#fff' }} h={'120px'} borderRadius={'20px'} boxShadow={'lg'}>
+        <Flex
+          px='10px'
+          bg={{ base: '#fff' }}
+          h={'120px'}
+          borderRadius={'20px'}
+          boxShadow={'lg'}
+        >
           <Center w='100%'>
             <Image src={CoffeeLogo} w={50} h={50} alt='Buy Me a Coffee' />
             <Text w={'100%'} fontWeight={600} fontSize={'24px'}>
@@ -18,6 +24,13 @@ export default function Home() {
             </Box>
           </Center>
         </Flex>
+        <Flex
+          w={'100%'}
+          alignItems={'center'}
+          justifyItems={'space-between'}
+          py={'20px'}
+          h='100px'
+        ></Flex>
       </Container>
     </Box>
   );
