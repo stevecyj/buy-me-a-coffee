@@ -11,6 +11,7 @@ import {
   Heading,
   Skeleton,
   Input,
+  Textarea,
 } from '@chakra-ui/react';
 import CoffeeLogo from './coffee.svg';
 import {
@@ -19,9 +20,12 @@ import {
   useContractRead,
 } from '@thirdweb-dev/react';
 import { BUYACOFFEE_ADDRESS } from './const/contractAddress';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 export default function Home() {
+  const [name, setName] = useState('');
+  const [message, setMessage] = useState('');
+
   const { contract } = useContract(BUYACOFFEE_ADDRESS);
   // method getTotalCoffee in contract
   const { data: totalCoffee, isLoading: loadingTotalCoffee } = useContractRead(
@@ -60,13 +64,14 @@ export default function Home() {
           justifyItems={'space-between'}
           py={'20px'}
           h='100px'
+          flexDirection={'column'}
         >
-          <SimpleGrid column={2} spacing={10} mt={'40px'} w={'50%'}>
+          <SimpleGrid columns={2} spacing={10} mt={'40px'} w={'100%'}>
             {/*左半邊卡片*/}
             <Box>
               <Card>
                 <CardBody>
-                  <Heading size='md' md='20px'>
+                  <Heading size='md' mb='20px'>
                     Buy Me a Coffee
                   </Heading>
                   <Flex>
@@ -82,7 +87,20 @@ export default function Home() {
                     bg='gray.100'
                     maxLength={16}
                     placeholder='請輸入名字，例：Mike'
-                  ></Input>
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
+                  />
+                  {/*  你的訊息*/}
+                  <Text fontSize='xl' py='10px'>
+                    你的訊息
+                  </Text>
+                  <Textarea
+                    value={message}
+                    size='lg'
+                    bg='gray.100'
+                    onChange={(e) => setMessage(e.target.value)}
+                  />
+                  <Box mt={'20px'}></Box>
                 </CardBody>
               </Card>
             </Box>
