@@ -1,4 +1,15 @@
-import { Container, Box, Flex, Text, Image, Center } from '@chakra-ui/react';
+import {
+  Container,
+  Box,
+  Flex,
+  Text,
+  Image,
+  Center,
+  SimpleGrid,
+  Card,
+  CardBody,
+  Heading,
+} from '@chakra-ui/react';
 import CoffeeLogo from './coffee.svg';
 import { ConnectWallet } from '@thirdweb-dev/react';
 
@@ -30,7 +41,19 @@ export default function Home() {
           justifyItems={'space-between'}
           py={'20px'}
           h='100px'
-        ></Flex>
+        >
+          <SimpleGrid column={2} spacing={10} mt={'40px'} w={'100%'}>
+            <Box>
+              <Card>
+                <CardBody>
+                  <Heading size='md' md='20px'>
+                    Buy Me a Coffee
+                  </Heading>
+                </CardBody>
+              </Card>
+            </Box>
+          </SimpleGrid>
+        </Flex>
       </Container>
     </Box>
   );
