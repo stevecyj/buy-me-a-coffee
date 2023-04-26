@@ -10,6 +10,7 @@ import {
   CardBody,
   Heading,
   Skeleton,
+  Input,
 } from '@chakra-ui/react';
 import CoffeeLogo from './coffee.svg';
 import {
@@ -60,7 +61,8 @@ export default function Home() {
           py={'20px'}
           h='100px'
         >
-          <SimpleGrid column={2} spacing={10} mt={'40px'} w={'100%'}>
+          <SimpleGrid column={2} spacing={10} mt={'40px'} w={'50%'}>
+            {/*左半邊卡片*/}
             <Box>
               <Card>
                 <CardBody>
@@ -73,6 +75,14 @@ export default function Home() {
                       {totalCoffee?.toString()}
                     </Skeleton>
                   </Flex>
+                  <Text fontSize='xl' py='10px'>
+                    你的名字
+                  </Text>
+                  <Input
+                    bg='gray.100'
+                    maxLength={16}
+                    placeholder='請輸入名字，例：Mike'
+                  ></Input>
                 </CardBody>
               </Card>
             </Box>
