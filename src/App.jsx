@@ -105,12 +105,20 @@ export default function Home() {
                   <Box mt={'20px'}>
                     <Center>
                       <Web3Button
-                        btnTitle='連接錢包'
                         contractAddress={BUYACOFFEE_ADDRESS}
                         action={async () => {
                           await contract.call('buyCoffee', [message, name], {
+                            // here use string
                             value: ethers.utils.parseEther('0.01'),
                           });
+                        }}
+                        onSuccess={() => {
+                          setMessage('');
+                          setName('');
+                          alert('buying coffee success');
+                        }}
+                        onError={(error) => {
+                          alert(error);
                         }}
                       >
                         買一杯咖啡
