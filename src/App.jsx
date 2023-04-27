@@ -30,6 +30,7 @@ import { ethers } from 'ethers';
 export default function Home() {
   const [name, setName] = useState('');
   const [message, setMessage] = useState('');
+  const [reverseRecentCoffee, setReverseRecentCoffee] = useState([]);
 
   // get contract
   const { contract } = useContract(BUYACOFFEE_ADDRESS);
@@ -50,7 +51,13 @@ export default function Home() {
   // }, [contract]);
 
   useEffect(() => {
-    console.log('recentCoffee', recentCoffee);
+    recentCoffee && console.log('recentCoffee', recentCoffee);
+    const data = { ...recentCoffee };
+
+    // 反轉順序
+    const reversedData = Object.values(data).reverse();
+    console.log('reversedData', reversedData);
+    setReverseRecentCoffee(reversedData);
   }, [recentCoffee]);
 
   return (
@@ -153,8 +160,8 @@ export default function Home() {
                   <Text fontWeight={'bold'}>誰買了咖啡</Text>
                   {!loadingRecentCoffee ? (
                     <Box>
-                      {recentCoffee &&
-                        recentCoffee.map((coffee, index) => {
+                      {reverseRecentCoffee &&
+                        reverseRecentCoffee.map((coffee, index) => {
                           return (
                             <Card key={index} my={'10px'}>
                               <CardBody>
