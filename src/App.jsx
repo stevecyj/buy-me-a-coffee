@@ -150,7 +150,29 @@ export default function Home() {
                   </Heading>
                   <Text fontWeight={'bold'}>誰買了咖啡</Text>
                   {!loadingRecentCoffee ? (
-                    <Box>顯示資料</Box>
+                    <Box>
+                      {recentCoffee &&
+                        recentCoffee.map((coffee, index) => {
+                          return (
+                            <Card key={index} my={'10px'}>
+                              <CardBody>
+                                <Flex alignItems={'center'} mb='10px'>
+                                  <Image
+                                    src={CoffeeLogo}
+                                    alt='Coffee'
+                                    width={30}
+                                    height={30}
+                                    mr={'10px'}
+                                  />
+                                  <Text fontWeight={'bold'} mr='10px'>
+                                    {coffee[2] ? coffee[2] : '匿名人士'}
+                                  </Text>
+                                </Flex>
+                              </CardBody>
+                            </Card>
+                          );
+                        })}
+                    </Box>
                   ) : (
                     <Stack>
                       <Skeleton height={'100px'} />
