@@ -13,7 +13,9 @@ import {
   Input,
   Textarea,
   Stack,
+  Tooltip,
 } from '@chakra-ui/react';
+import { InfoOutlineIcon } from '@chakra-ui/icons';
 import CoffeeLogo from './coffee.svg';
 import {
   ConnectWallet,
@@ -167,6 +169,13 @@ export default function Home() {
                                   <Text fontWeight={'bold'} mr='10px'>
                                     {coffee[2] ? coffee[2] : '匿名人士'}
                                   </Text>
+                                  <Tooltip
+                                    label={`錢包地址： ${coffee[0]}`}
+                                    bg={'gray.200'}
+                                    color='black'
+                                  >
+                                    <InfoOutlineIcon />
+                                  </Tooltip>
                                 </Flex>
                               </CardBody>
                             </Card>
