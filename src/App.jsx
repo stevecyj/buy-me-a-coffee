@@ -12,6 +12,7 @@ import {
   Skeleton,
   Input,
   Textarea,
+  Stack,
 } from '@chakra-ui/react';
 import CoffeeLogo from './coffee.svg';
 import {
@@ -41,9 +42,14 @@ export default function Home() {
   const { data: recentCoffee, isLoading: loadingRecentCoffee } =
     useContractRead(contract, 'getAllCoffee');
 
+  // 先看取得內容
   // useEffect(() => {
   //   console.log('contract', contract);
   // }, [contract]);
+
+  useEffect(() => {
+    console.log('recentCoffee', recentCoffee);
+  }, [recentCoffee]);
 
   return (
     <Box bg='#fefefe' w={'100%'} h={'100%'}>
@@ -134,11 +140,24 @@ export default function Home() {
                 </CardBody>
               </Card>
             </Box>
+
             {/*右半邊卡片*/}
             <Box>
-              <Card maxH={'50vh'} overflow={'scroll'}>
+              <Card maxH={'50vh'} overflowY={'scroll'}>
                 <CardBody>
-                  <Text>誰買了咖啡</Text>
+                  <Heading size='md' mb='20px'>
+                    Buy Me a Coffee
+                  </Heading>
+                  <Text fontWeight={'bold'}>誰買了咖啡</Text>
+                  {!loadingRecentCoffee ? (
+                    <Box>顯示資料</Box>
+                  ) : (
+                    <Stack>
+                      <Skeleton height={'100px'} />
+                      <Skeleton height={'100px'} />
+                      <Skeleton height={'100px'} />
+                    </Stack>
+                  )}
                 </CardBody>
               </Card>
             </Box>
