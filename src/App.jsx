@@ -177,6 +177,13 @@ export default function Home() {
                                     <InfoOutlineIcon />
                                   </Tooltip>
                                 </Flex>
+                                <Flex>
+                                  <Text>
+                                    {coffee[1]
+                                      ? coffee[1]
+                                      : '這個人什麼都沒留下！'}
+                                  </Text>
+                                </Flex>
                               </CardBody>
                             </Card>
                           );
