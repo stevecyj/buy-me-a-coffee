@@ -28,12 +28,18 @@ export default function Home() {
   const [name, setName] = useState('');
   const [message, setMessage] = useState('');
 
+  // get contract
   const { contract } = useContract(BUYACOFFEE_ADDRESS);
+
   // method getTotalCoffee in contract
   const { data: totalCoffee, isLoading: loadingTotalCoffee } = useContractRead(
     contract,
     'getTotalCoffee',
   );
+
+  // getAllCoffee
+  const { data: recentCoffee, isLoading: loadingRecentCoffee } =
+    useContractRead(contract, 'getAllCoffee');
 
   // useEffect(() => {
   //   console.log('contract', contract);
@@ -129,7 +135,13 @@ export default function Home() {
               </Card>
             </Box>
             {/*右半邊卡片*/}
-            <Box>右半邊卡片</Box>
+            <Box>
+              <Card maxH={'50vh'} overflow={'scroll'}>
+                <CardBody>
+                  <Text>誰買了咖啡</Text>
+                </CardBody>
+              </Card>
+            </Box>
           </SimpleGrid>
         </Flex>
       </Container>
