@@ -26,6 +26,7 @@ import {
 import { BUYACOFFEE_ADDRESS } from './const/contractAddress';
 import { useEffect, useState } from 'react';
 import { ethers } from 'ethers';
+import dayjs from 'dayjs';
 
 export default function Home() {
   const [name, setName] = useState('');
@@ -57,6 +58,10 @@ export default function Home() {
     // 反轉順序
     const reversedData = Object.values(data).reverse();
     console.log('reversedData', reversedData);
+
+    reversedData.map((contract) => {
+      console.log(dayjs(contract[3]._hex * 1000).format('YYYY-MM-DD'));
+    });
     setReverseRecentCoffee(reversedData);
   }, [recentCoffee]);
 
